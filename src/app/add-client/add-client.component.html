@@ -1,0 +1,115 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">client</h4>
+                        <p class="card-category"> Pour ajouter un client:</p>
+                    </div>
+    <div class="card-body">
+
+    <form  #f="ngForm" (submit)="addClient() ">
+        
+        <div class="form-group ">
+          <label>First Name</label>
+          <input name="firstname" [(ngModel)]="client.nom" #first="ngModel" required minlength="3" pattern="[a-zA-Z]*" type="text" class="form-control">
+        </div>
+        <div *ngIf="first.touched && first.errors">
+        <div class="alert alert-danger" role="alert" *ngIf="first.errors.required">
+            Champ Obligatoire
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="first.errors.minlength">
+            Le Champ doit contenir au moins {{first.errors.minlength.requiredLength}} lettres.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="first.errors.pattern">
+            Le champ doit contenir que des lettres
+        </div>
+    </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input name="lastname" minlength="3" pattern="[a-zA-Z]*" [(ngModel)]="client.prenom" #last="ngModel" required type="text" class="form-control">
+          </div>
+          <div *ngIf="last.touched && last.errors">
+            <div class="alert alert-danger" role="alert" *ngIf="last.errors.required">
+                Champ Obligatoire
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="last.errors.minlength">
+                Le Champ doit contenir au moins {{last.errors.minlength.requiredLength}} lettres.
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="last.errors.pattern">
+                Le champ doit contenir que des lettres
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email" pattern="^[a-zA-Z0-9._-]+@gmail.com" [(ngModel)]="client.email"  type="email" class="form-control" id="email" #email="ngModel">
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="email.invalid">
+            Votre email doit se terminer par "@gmail.com"
+        </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" pattern="^[a-zA-Z0-9]{8,}?" [(ngModel)]="client.password"  type="text" class="form-control" id="password" #password="ngModel">
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="password.invalid">
+            Votre mot de passe doit contenir des lettres non accentuées et des chiffres et de minimum 8 caractères
+        </div>
+        <div class="form-group">
+          <label>Date de Naissance :</label>
+          <input name="BirthDate" [(ngModel)]="client.dateNaissance"  type="date" class="form-control">
+        </div>
+        <div class="form-group" >
+            <label for="Profession">Profession</label>
+            <!--<input name="Profession" [(ngModel)]="client.profession"  type="profession" class="form-control" id="profession" #profession="ngModel">
+            <br>
+            <select class="form-select " aria-label="Default select example">
+                
+                <option value="1">Docteur</option>
+                <option value="2">Ingenieur</option>
+                <option value="3">Etudiant</option>
+                <option value="4">Commercial</option>
+                <option value="5">Cadre</option>
+                <option value="6">Autre..</option>
+            </select>-->
+            <select name="Profession" id="Profession" [(ngModel)]="client.profession"  type="profession" class="form-control">
+                <option value="DOCTEUR">DOCTEUR</option>
+                <option value="INGENIEUR">INGENIEUR</option>
+                <option value="ETUDIANT">ETUDIANT</option>
+                <option value="COMMERCIAL">COMMERCIAL</option>
+                <option value="CADRE">CADRE</option>
+                <option value="AUTRE">AUTRE</option>
+            </select>
+            
+
+        </div>
+          
+        <div class="form-group" >
+            <label for="categorie">categorie client</label>
+            <!--<input name="categorie" [(ngModel)]="client.categorie"  type="categorie" class="form-control" id="categorie" #categorie="ngModel">-->
+
+            <select class="form-select " [(ngModel)]="client.categorieClient"  type="categorie" class="form-control" id="categorie">
+                
+                <option value="FIDELE">FIDELE</option>
+                <option value="ORDINAIRE">ORDINAIRE</option>
+                <option value="PREMIUM">PREMIUM</option>
+            </select>
+
+        </div>
+       
+          <div class="div-btn">
+            <button type="submit" class="btn btn-primary"  (click)="saveClient()" >Save</button>  
+            <a type="submit" class="btn btn-primary"  >Retour</a>  
+         </div>
+         
+         
+        
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    

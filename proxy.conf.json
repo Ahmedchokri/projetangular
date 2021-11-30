@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+    "target": "http://localhost:8091/SpringMVC/servlet",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {"^/api" : ""}
+    }
+    }
