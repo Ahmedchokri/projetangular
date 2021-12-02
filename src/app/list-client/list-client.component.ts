@@ -10,6 +10,8 @@ import {ClientService} from 'app/client.service'
 export class ListClientComponent implements OnInit {
   list:Client[];
   client: Client =new Client();
+  categorie:any;
+  p:number =1;
 
   constructor(private cs:ClientService, private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -34,5 +36,25 @@ export class ListClientComponent implements OnInit {
      
   
      }
+     SearchClient(){
+      if(this.categorie==""){
+        this.ngOnInit();
+      }else{
+        this.list =this.list.filter(rep =>{
+          return rep.categorieClient.toLocaleUpperCase().match(this.categorie.toLocaleUpperCase());
+        });
+  
+        
+      }
+  
+    }
+    key:string='id';
+  reverse:boolean=false;
+  sortClient(key){
+    this.key=key;
+    this.reverse= !this.reverse;
+  }
+
+   
 
 }

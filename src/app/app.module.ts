@@ -27,7 +27,8 @@ import { FactureComponent } from './facture/facture.component';
 import { ListClientComponent } from './list-client/list-client.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { UpdateClientComponent } from './update-client/update-client.component';
-
+import { OrderModule } from 'ngx-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -39,6 +40,8 @@ import { UpdateClientComponent } from './update-client/update-client.component';
     AppRoutingModule,
     MatTooltipModule,
     MatFormFieldModule,
+    OrderModule,
+    NgxPaginationModule,
  
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
