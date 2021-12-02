@@ -1,0 +1,90 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Ajouter Facture</h4>
+                     
+                  </div>
+                 
+                  <div>  
+                      <div class="col-sm-4"></div>  
+                      <div class="col-sm-4" >  
+                        <div [hidden]="submitted" style="width: 400px;">  
+                          <form [formGroup]="Facturesaveform" #save (ngSubmit)="saveFacture(saveFacture)">  
+                              <div class="form-group">  
+                                  <label for="name">Montant Remise</label>  
+                                  <input type="text" class="form-control"  formControlName="montantremise" data-toggle="tooltip"   
+                                     data-placement="right" title="Enter montantRemise" >  
+                                     <div class="alert alert-danger" *ngIf="montantremise.errors">
+                                        <div *ngIf="montantremise.errors.required">champs obligatoire</div>
+                                        <div *ngIf="montantremise.errors.pattern">pattern non respecte</div>
+                                              </div>
+                              </div>  
+                              
+                              <div class="form-floating mb-3">
+                                <label for="name">Date Facture</label>
+                                <input class="form-control" id="floatingInput" name="datefacture" type="date" placeholder="Date Facture" #ndate="ngModel"
+                                  [(ngModel)]="Facture.datefacture" />
+                                  <div class="alert alert-danger" *ngIf="datefacture.errors">
+                                  <div *ngIf="datefacture.errors.required">champs obligatoire</div>
+                                  <div *ngIf="datefacture.errors.pattern">pattern non respecte</div>
+                                  </div>
+                            
+                              </div>
+
+                              
+                              <div class="form-group">  
+                                <label for="name">Active</label>  
+                                <input type="text" class="form-control" formControlName="active"   
+                                  data-toggle="tooltip" data-placement="right" title="Enter active">  
+                                  <div class="alert alert-danger" *ngIf="active.errors">
+                                    <div *ngIf="active.errors.required">champs obligatoire</div>
+                                    <div *ngIf="active.errors.pattern">pattern non respecte</div>
+                                          </div> 
+                            </div>
+                            <div class="form-group">  
+                                <label for="name">Montant Facture</label>  
+                                <input type="text" class="form-control" formControlName="montantfacture"   
+                                  data-toggle="tooltip" data-placement="right" title="Enter montantFacture">  
+                                  <div class="alert alert-danger" *ngIf="montantfacture.errors">
+                                    <div *ngIf="montantfacture.errors.required">champs obligatoire</div>
+                                    <div *ngIf="montantfacture.errors.pattern">pattern non respecte</div>
+                                          </div> 
+                            </div>
+                        
+
+                            <button type="submit" class="btn btn-success" >Submit</button>  
+                          </form>  
+                      </div>  
+                      </div>  
+                       
+                    </div>  
+                    <div >  
+                     
+                    </div>
+
+
+
+                  <div class="input-group">
+                     
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-striped">
+                              <thead class=" text-primary">
+                                
+                              </thead>
+                              <tbody> 
+                              
+                               
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+             
+              
+ </div>
