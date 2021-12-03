@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Fournisseur</h4>
+                        <p class="card-category"> Voila la liste des fournisseurs</p>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" placeholder="    Rechercher..." name="fournisseur" [(ngModel)] = "libellefournisseur" (ngModelChange)="Search()" >
+                        <td><a [routerLink]="['/icons/addfournisseur']" class="btn btn-primary" > <i class="fa fa-plus"   ></i> &nbsp; Add</a></td>
+                        <div class="table-responsive">
+
+                            <table class="table">
+                                
+                                <thead class=" text-primary">
+                                    <th>
+                                        Code Fournisseur 
+                                    </th>
+                                    <th>
+                                        Libelle Fournisseur
+                                    </th>
+                                   
+                                    <th>
+                                        Action
+                                    </th>
+                                
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let u of list | orderBy: key: reverse | paginate: {itemsPerPage:3,currentPage:p};" >
+
+                                        
+                                        <td>{{u.codefournisseur}}</td>
+                                        <td>{{u.libellefournisseur}}</td>
+                                                 
+                                        <td>
+                                            <!-- <button type="button" class="btn btn-info" (click)="openDetails(contentDetails,fournisseur)" ><i class="fa fa-search"></i>Details</button> -->
+                                            <a [routerLink]="['/icons/updatefournisseur',u.idfournisseur]" class="btn btn-primary"><i class="fa fa-pencil-square"></i> </a>
+                                            <button type="button" class="btn btn-danger" (click)="openSweetalert()"(click)="deleteFournisseur(u.idfournisseur)" ><i class="fa fa-trash"></i> </button>
+   
+                                            
+                                        </td>
+                                    
+                                    </tr>
+                    
+                                    
+                                    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <router-outlet></router-outlet>
+                
+                <router-outlet></router-outlet>
+ </div>
+

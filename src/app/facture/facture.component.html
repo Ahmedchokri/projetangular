@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Fournisseur</h4>
+                        <p class="card-category"> Voila la liste des fournisseurs</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        etat 
+                                    </th>
+                                    <th>
+                                        Libelle Fournisseur
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let u of list; let i=index; let f=first" >
+
+                                        <td>{{u.idfacture}}</td>
+                                        <td>{{u.active}}</td>
+                                        <td>{{u.datefacture}}</td>
+                                        <td>{{u.montantfacture}}</td>
+                                        <td>{{u.montantremise}}</td>
+                                        <!-- <td>{{u.client_idclient}}</td> -->
+                                        
+                                        <td>
+                                            <!-- <button type="button" class="btn btn-danger" (click)="deleteFournisseur(u.idfournisseur)" >Delete</button> -->
+                                            <button type="button" class="btn btn-warning">Update</button>
+                                        </td>
+                                    
+                                    </tr>
+                                    <!-- <td><a  [routerLink]="['/addfournisseur']" class="btn btn-primary">Add</a></td> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+ </div>
+

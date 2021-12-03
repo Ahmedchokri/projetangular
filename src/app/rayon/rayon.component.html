@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Rayon</h4>
+                        <p class="card-category"> Voila la liste des rayons</p>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" placeholder="    Rechercher..." name="rayon" [(ngModel)] = "libelle" (ngModelChange)="Search()" >
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Code 
+                                    </th>
+                                    <th>
+                                        Libelle 
+                                    </th>
+                                   
+                                    <th>
+                                        Action
+                                    </th>
+                                
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let u of listrayon | orderBy: key: reverse | paginate: {itemsPerPage:3,currentPage:p};" >
+
+                                        
+                                        <td>{{u.coderayon}}</td>
+                                        <td>{{u.libelle}}</td>
+                                                 
+                                        <td>
+                                            <!-- <button type="button" class="btn btn-info" (click)="openDetails(contentDetails,fournisseur)" ><i class="fa fa-search"></i>Details</button> -->
+                                            <a [routerLink]="['/rayon/updaterayon',u.idrayon]" class="btn btn-primary"><i class="fa fa-pencil-square"></i>Update</a>
+                                            <button type="button" class="btn btn-danger" (click)="openSweetalert()"(click)="deleteRayon(u.idrayon)" ><i class="fa fa-trash"></i>Delete</button>
+   
+                                            
+                                        </td>
+                                    
+                                    </tr>
+                    
+                                    <td><a [routerLink]="['/rayon/addrayon']" class="btn btn-primary">Add</a></td>
+                                    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <router-outlet></router-outlet>
+                
+                <router-outlet></router-outlet>
+ </div>
+

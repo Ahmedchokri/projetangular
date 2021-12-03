@@ -1,0 +1,30 @@
+
+ <div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Ajouter un Rayon</h4>
+                      <p class="card-category">Entrer les informations nécissaires</p>
+                  </div> 
+                  <div class="card-body">
+                      <form>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Code </label>
+                            <input type="text" class="form-control"   placeholder="Enter code" [(ngModel)]="rayon.coderayon">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Libelle </label>
+                            <input type="text" class="form-control" placeholder=" Entrer libelle" [(ngModel)]="rayon.libelle">
+                          </div>
+                          
+                          <a type="button" class="btn btn-primary"(click)="save()"  routerLink="/rayon">Submit</a>
+                        </form>
+                  </div>
+              </div>
+          </div>
+      
+      </div>
+  </div>
+</div>

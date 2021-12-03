@@ -1,0 +1,28 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Modifier</h4>
+                      <p class="card-category"> Modifier les informations nécessaires</p>
+                  </div>
+<div class="card-body">
+    <form>
+        <div class="form-group">
+          <label for="CodeInput">Code Fournisseur</label>
+          <input name="codefournisseur" type="text" class="form-control" [(ngModel)]="f.codefournisseur">
+        </div>
+        <div class="form-group">
+          <label for="LibelleInput">Libelle Fournisseur</label>
+          <input name =" libellefournisseur" type="text" class="form-control"  [(ngModel)]="f.libellefournisseur">
+        </div>
+       
+        <button type="submit" class="btn btn-primary"(click)="update()" routerlink="/icons" >Update</button>
+      </form>
+</div>
+</div>
+</div>
+      </div>
+      </div>
+</div>

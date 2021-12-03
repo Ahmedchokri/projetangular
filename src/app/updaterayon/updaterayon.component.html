@@ -1,0 +1,28 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Modifier</h4>
+                      <p class="card-category"> Modifier les informations nécessaires</p>
+                  </div>
+<div class="card-body">
+    <form>
+        <div class="form-group">
+          <label for="CodeInput">Code Rayon</label>
+          <input name="coderayon" type="text" class="form-control" [(ngModel)]="rayon.coderayon">
+        </div>
+        <div class="form-group">
+          <label for="LibelleInput">Libelle Rayon</label>
+          <input name =" libelle" type="text" class="form-control"  [(ngModel)]="rayon.libelle">
+        </div>
+       
+        <button type="submit" class="btn btn-primary"(click)="update()" routerlink="rayon" >Update</button>
+      </form>
+</div>
+</div>
+</div>
+      </div>
+      </div>
+</div>
