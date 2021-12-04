@@ -9,6 +9,7 @@ export class ClientService {
   list:Client[];
   client:Client;
   clientsUrl:string='/api/retrieveClients';
+  clientIdUrl:string='/api//retrieveClient'
   clientDelUrl:string='/api/removeClients';
   clientAddUrl:string='/api/addClients';
   clientUpdateUrl:string='/api/updateClients';
@@ -23,6 +24,10 @@ export class ClientService {
 
   getClient():Observable<Client[]>{
     return this._http.get<Client[]>(this.clientsUrl);
+  }
+  getClientById(clientId:number):Observable<Client>{
+    const url=this.clientIdUrl+'/'+clientId;
+    return this._http.get<Client>(url);
   }
   addclient(client:Client):Observable<Object>{
     return this._http.post(this.clientAddUrl,client);

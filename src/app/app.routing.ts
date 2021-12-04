@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ListClientComponent } from './list-client/list-client.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { UpdateClientComponent } from './update-client/update-client.component';
+import { DetailsClientComponent } from './details-client/details-client.component';
 
 const routes: Routes =[
   {
@@ -23,7 +24,8 @@ const routes: Routes =[
   },
   {path:"clients",component:ListClientComponent},
   {path:"ajoutclient",component:AddClientComponent},
-  {path:"updateclient/:id",component:UpdateClientComponent}
+  {path:"updateclient/:id",component:UpdateClientComponent},
+  {path:"detailsclient/:id",component:DetailsClientComponent}
 ];
 
 @NgModule({

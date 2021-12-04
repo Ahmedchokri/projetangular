@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">client</h4>
+                    <p class="card-category"> Détails d'un client  </p>
+                </div>
+ 
+ <div class="card-body" >
+    <div >
+          
+        <label> <b> identifiant: </b></label> {{client.idClient}}
+      
+    </div>
+      
+        <div >
+          
+            <label> <b> Nom: </b></label> {{client.nom}}
+          
+        </div>
+        <div>
+            <label> <b> Prenom: </b></label> {{client.prenom}}
+        </div>
+        <div>
+            <label> <b> Email : </b></label> {{client.email}}
+        </div>
+        <div>
+            <label> <b> Password : </b></label> {{client.password}}
+        </div>
+        <div>
+            <label> <b> Date de Naissance : </b></label> {{client.dateNaissance}}
+        </div>
+        <div>
+            <label> <b> Profession : </b></label> {{client.profession}}
+        </div>
+        <div>
+            <label> <b> categorie Client : </b></label> {{client.categorieClient}}
+        </div>
+        
+     
+    </div>
+    
+    <div >
+      <button type="button" class="btn btn-outline-dark" [routerLink]="['/clients']" >close</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+ 

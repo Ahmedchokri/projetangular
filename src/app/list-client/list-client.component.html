@@ -1,5 +1,5 @@
-<p>list-client works!</p>
-<div class="main-content">
+
+<div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -10,7 +10,7 @@
                     </div>
                     <nav class="navbar ">
                         <div class="col-auto">
-                            <label for="categorie" class="visually-hidden">categorie Client :</label>
+                            <label for="categorie" class="visually-hidden"><i class="fa fa-search"></i>categorie Client :</label>
                           <input type="text" class="form-control" name="categorie"
                           [(ngModel)]="categorie" (ngModelChange)="SearchClient()" 
                           placeholder="entrer la categorie client " >
@@ -21,36 +21,50 @@
                             <table class="table">
                                 <thead class=" text-primary">
             <tr>
-              <th scope="col" (click)="sortClient('id')">id&nbsp;<i class="fa fa-sort"></i></th>
+              <th scope="col" (click)="sortClient('id')" hidden>id&nbsp;<i class="fa fa-sort"></i></th>
               <th scope="col"(click)="sortClient('id')">nom&nbsp;<i class="fa fa-sort"></i></th>
               <th scope="col">prenom</th>
-              <th scope="col">email</th>
-              <th scope="col">password</th>
+              <th scope="col" hidden>email</th>
+              <th scope="col" hidden>password</th>
               <th scope="col">dateNaissance</th>
               <th scope="col">profession</th>
               <th scope="col">categorie client</th>
+            <th scope="col">Actions</th>
               
             </tr>
           </thead>
           <tbody >
-              <tr *ngFor ="let c of list | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:p};" >
-                  <td >{{c.idClient}}</td>
+              <tr *ngFor ="let c of list | orderBy: key: reverse | paginate: {itemsPerPage:2,currentPage:p};" >
+                  <td hidden>{{c.idClient}}</td>
                   <td >{{c.nom}}</td>
                   <td >{{c.prenom}}</td>
-                  <td >{{c.email}}</td>
-                  <td >{{c.password}}</td>
+                  <td hidden>{{c.email}}</td>
+                  <td hidden>{{c.password}}</td>
                   <td >{{c.dateNaissance }}</td>
                   <td >{{c.profession}}</td>
                   <td >{{c.categorieClient}}</td>
-                  <td><a class=" btn btn-danger" (click)="deleteClient(c.idClient)"> Delete </a> </td>
-                  <td><a class="btn btn-success" [routerLink]="['/updateclient',c.idClient]"> Update </a></td>
+                  <td><a  class=" btn  btn-sm btn-danger" (click)="deleteClient(c.idClient)" style="margin-left: 10px;"> 
+                    <i class="fa fa-remove"></i>Delete 
+                    </a> 
+                  </td>
+                  <td><a class="btn  btn-sm btn-warning" [routerLink]="['/updateclient',c.idClient]" style="margin-left: 10px;"> 
+                    <i class="fa fa-edit"></i>Update
+                 </a>
+                </td>
+                  <td><a class="btn  btn-sm btn-info"  (click)="detailsClient(c.idClient)" style="margin-left: 10px;">
+                    <i class="fa fa-search"></i> Info
+                </a> 
+                </td>
               </tr>
   
           </tbody>
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          
           </table>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-primary" (click)="passAjout()" >ajouter client</button>
+          <div class="border">
+              <button class="btn btn-md btn-outline-primary" (click)="passAjout()" >
+                <i class="fa fa-user"></i>  ajouter client
+                </button>
               
           </div>
           <!--<div class="" id="form">

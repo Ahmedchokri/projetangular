@@ -29,6 +29,9 @@ import { AddClientComponent } from './add-client/add-client.component';
 import { UpdateClientComponent } from './update-client/update-client.component';
 import { OrderModule } from 'ngx-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+
+import { DetailsClientComponent } from './details-client/details-client.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -45,7 +48,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
  
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+       NgbModule
   ],
   declarations: [
     AppComponent,
@@ -59,6 +63,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ListClientComponent,
     AddClientComponent,
     UpdateClientComponent,
+    DetailsClientComponent,
+    DetailsClientComponent,
 
   ],
   providers: [],
