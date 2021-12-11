@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Facture</h4>
+                        <p class="card-category">liste des factures</p>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="    Rechercher..." name="montantfacture" [(ngModel)] = "datefacture" (ngModelChange)="Search()" >
+                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table">
+                                <thead class=" text-primary">
+                                    <!-- <th>
+                                        Id Facture
+                                    </th> -->
+                                     <th>
+                                        Date Facture 
+                                     </th> 
+                                    <th>
+                                        Montant Facture
+                                    </th>
+                                    <th (click)="sort('remise')">
+                                        Montant Remise&nbsp;<i class="fa fa-sort"></i>
+                                    </th>
+                                    <th>
+                                        Active 
+                                     </th> 
+                                    <th>
+                                        Action
+                                    </th>
+                                   
+                                 
+                                </thead>
+                                <tbody>
+                                     <tr *ngFor="let u of list | 
+                                     paginate: { 
+                                         itemsPerPage: 2,
+                                          currentPage: page,
+                                           totalItems : totalLength 
+                                        } | orderBy: key:reverse"> 
+                                        
+
+                                        <!-- <td>{{u.idfacture}}</td> -->
+                                       
+                                        <td>{{ u.datefacture | date:'dd/MM/yyyy'}}</td> 
+                                        <td>{{u.montantfacture}}</td>
+                                        <td>{{u.montantremise}}</td>
+                                        <td>{{u.active}}</td>  
+                                       <!-- <td><button class="btn-danger " (click)="deleteFacture(u.idfacture)" >Delete</button></td>  -->
+                                       <td>
+                                           <!-- <button class="btn btn-sm btn-dark " (click)="deleteFacture(u.idfacture)" > 
+                                               <i class="fa fa-trash"></i></button> -->
+                                               
+
+                                               
+                                         <button type="button" class="btn btn-sm btn-danger" (click)="cancelFacture(facture.idfacture)" >
+                                            <i class="fa fa-ban fa-fw"></i> 
+                                        </button>
+
+
+                                         <button class="btn btn-sm btn-info"  (click)="openDialog()" >
+                                            <i class="fa fa-search"></i> Details
+                                        </button> 
+                                        </td> 
+                                      
+                                    </tr>
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <pagination-controls class="text-center my-pagination"  (pageChange)="page = $event"></pagination-controls>
+                
+               
+                <!-- <span  class="material-icons" (click)="download()" tabindex="-1" role="button" aria-disabled="true">
+                    picture_as_pdf </span> -->
+                <!-- <button  class="btn  btn-danger" tabindex="-1" role="button" aria-disabled="true" (click)="download()">Télécharger PDF</button> -->
+ </div>
+

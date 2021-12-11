@@ -1,0 +1,21 @@
+
+<form [formGroup]="myForm" (submit)="edit()">
+    <div class="form-group">
+        <label>IdStock</label>
+        <input type="text" class="form-control" formControlName="idstock">
+    </div>
+    <div class="form-group">
+        <label>Quantite stock</label>
+        <input type="text" class="form-control" formControlName="quantite">
+    </div>
+    <div class="form-group">
+        <label>Quantite Minimum</label>
+        <input type="text" class="form-control" formControlName="quanite_min">
+    </div>
+    <div class="form-group">
+        <label>libelle Stock</label>
+        <input type="text" class="form-control" formControlName="libellestock">
+    </div>
+    <br>
+    <input type="submit" class="btn btn-success" style="margin-left: 40%; margin-bottom: 20px;" value="Modifier">
+</form>

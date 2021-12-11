@@ -1,0 +1,141 @@
+<div class="main-content">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-md-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Stock</h4>
+
+          </div>
+
+
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h1 class="modal-title" id="modal-basic-title">Create Stock</h1>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-add-stock [prop2]="myRay" [stockToadd]="myRay"></app-add-stock>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">annuler</button>
+            </div>
+          </ng-template>
+
+          <ng-template #qr let-modal>
+            <div class="modal-header">
+              <h1 class="modal-title" id="modal-basic-title">QR-Code</h1>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body" style="display: flex; justify-content: center;">
+              <qr-code [value]="qrInfo" size="400" style="text-align:center"></qr-code>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">fermer</button>
+            </div>
+          </ng-template>
+
+
+
+          <div>
+
+            <!-- <button [routerLink]="['/AddStock']" class="btn btn-primary">Ajouter</button>-->
+            <button class="btn btn-success" (click)="triggerModal1(modalData)">Ajouter</button>
+          </div>
+          <div class="input-group" style="width: 40%;">
+            <input type="text" class="form-control" placeholder="    Rechercher..." name="libelles"
+              [(ngModel)]="libellestock" (ngModelChange)="Search()">
+            <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+              <i class="material-icons">search</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped" id="table">
+                <thead class=" text-primary">
+                  <!-- <th>
+                                        Id Facture
+                                    </th> -->
+                  <tr>
+                    <th (click)="sort('remise')">Quantité Stock&nbsp;<i class="fa fa-sort"></i></th>
+                    <th>Quantité Min</th>
+                    <th>libelle Stock</th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
+
+                  </tr>
+
+
+                </thead>
+                <tbody>
+                  <!-- <tr *ngFor="let u of stocks; let i=indexn ; |
+                                    paginate: { 
+                                        itemsPerPage: 2,
+                                         currentPage: page,
+                                          totalItems : totalLength 
+                                       } | orderBy: key:reverse " > -->
+
+                  <tr *ngFor="let u of stocks | 
+                                       paginate: { 
+                                           itemsPerPage: 2,
+                                            currentPage: page,
+                                             totalItems : totalLength 
+                                          } | orderBy: key:reverse">
+                    <!-- <td>{{u.idfacture}}</td> -->
+
+
+                    <td>{{u.quantite}}</td>
+                    <td>{{u.quanite_min}}</td>
+                    <td>{{u.libellestock}}</td>
+                    <td><button class="btn  btn-danger" (click)="deleteStock(u.idstock,i)">supprimer</button></td>
+                    <td><button class="btn  btn-warning" (click)="triggerModal(modal,u)">modifier</button> </td>
+
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+              <button class="btn btn-success" (click)="triggerModal1(qr)">QR-code</button>
+              <ng-template #modal let-modal>
+                <div class="modal-header">
+                  <h1 class="modal-title" id="modal-basic-title">Modifier Stock</h1>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <app-edit-stock (edited)="updatestock($event)" [prop2]="myRay" [stockToEdit]="myRay"></app-edit-stock>
+                </div>
+                <!--<div class="modal-footer">
+                  <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+                </div>-->
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <pagination-controls class="text-center my-pagination" (pageChange)="page = $event">
+        </pagination-controls>
+        <app-edit-stock (edited)="updatestock($event)" [prop2]="myRay" [stockToEdit]="myRay" *ngIf="show">
+        </app-edit-stock>
+
+        <!-- <span  class="material-icons" (click)="download()" tabindex="-1" role="button" aria-disabled="true">
+                    picture_as_pdf </span> -->
+        <!-- <button  class="btn  btn-danger" tabindex="-1" role="button" aria-disabled="true" (click)="download()">Télécharger PDF</button> -->
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+  <canvas id="canvas">{{chart}}</canvas>
+</div>
