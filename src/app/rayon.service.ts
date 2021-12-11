@@ -33,7 +33,7 @@ export class RayonService {
      }
      getRayonById(idrayon:number):Observable<Rayon>{
    
-          return  this._http.get<Rayon>(this.rayonUrl+'/'+idrayon);
+          return  this._http.get<Rayon>(this.rayonByIdUrl+'/'+idrayon);
      }
      updateRayon( rayon:Rayon):Observable<Rayon>{
        return this._http.put<Rayon>(this.updateUrl, rayon , this.httpOptions);

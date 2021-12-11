@@ -5,6 +5,14 @@ import { AddrayonComponent } from 'app/addrayon/addrayon.component';
 import { Rayon } from 'app/modals/rayon';
 import { RayonService } from 'app/rayon.service';
 import Swal from 'sweetalert2';
+// import { map } from 'rxjs/operators';
+
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { TypeScriptEmitter } from '@angular/compiler';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-rayon',
@@ -12,7 +20,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./rayon.component.css']
 })
 export class RayonComponent implements OnInit {
-
+  //items:Rayon[];
   terms: Boolean = false;
   listrayon:Rayon[];
   libelle:any;
@@ -30,9 +38,10 @@ export class RayonComponent implements OnInit {
 
   }
 
-  deleteFournisseur(idrayon){
+  deleteRayon(idrayon){
   
-    this.rs.deleteRayon(idrayon).subscribe(res=>this.route.navigate(["/icons"]));
+    this.rs.deleteRayon(idrayon).subscribe(res=>this.route.navigate(["/rayon"]));
+    console.log();
     }
 
     Search(){
@@ -42,7 +51,7 @@ export class RayonComponent implements OnInit {
       else{
         this.listrayon = this.listrayon.filter(res =>{
           // toLocaleLowerCase
-          return res.libellefournisseur.toLocaleString().match(this.libelle.toLocaleString());
+          return res.libelle.toLocaleString().match(this.libelle.toLocaleString());
         })
       }
     }
@@ -61,9 +70,11 @@ export class RayonComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'Yes'
       })
-      this.route.navigate(["/icons"]);
+      this.route.navigate(["/rayon"]);
       console.log(this.terms);
     }
+
+   
   
   }  
 

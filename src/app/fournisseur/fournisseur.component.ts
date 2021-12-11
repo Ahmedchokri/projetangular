@@ -37,6 +37,7 @@ export class FournisseurComponent implements OnInit {
 deleteFournisseur(idfournisseur){
   
   this.fs.deleteFournisseur(idfournisseur).subscribe(res=>this.route.navigate(["/icons"]));
+ 
   }
 
 
@@ -67,6 +68,14 @@ deleteFournisseur(idfournisseur){
       confirmButtonText: 'Yes'
     })
     this.route.navigate(["/icons"]);
+    
   }
+  
+
+
+
+//   reloadPage() {
+//     window.location.reload();
+//  }
 
 }

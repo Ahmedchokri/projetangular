@@ -9,17 +9,24 @@
                       <p class="card-category">Entrer les informations nécissaires</p>
                   </div> 
                   <div class="card-body">
-                      <form>
+                      <form #f="ngForm">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Code </label>
-                            <input type="text" class="form-control"   placeholder="Enter code" [(ngModel)]="rayon.coderayon">
+                            <label for="floatingInput">Code </label>
+                            <input id="floatingInput" name="coderayon" type="text" class="form-control"   placeholder="Enter code" [(ngModel)]="rayon.coderayon" #ncoderayon="ngModel" required>
+                          </div>
+                          <div class="font-alert text-danger mb-3" *ngIf="ncoderayon.touched&&ncoderayon.invalid">
+                            <div *ngIf="ncoderayon.hasError('required')">Code is required</div>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword1">Libelle </label>
-                            <input type="text" class="form-control" placeholder=" Entrer libelle" [(ngModel)]="rayon.libelle">
+                            <label for="floatingInput">Libelle </label>
+                            <input id="floatingInput" name="libelle" type="text" class="form-control" placeholder=" Entrer libelle" [(ngModel)]="rayon.libelle" #nlibelle="ngModel" required minlength="3" >
+                          </div>
+                          <div class="font-alert text-danger mb-3" *ngIf="nlibelle.touched&&nlibelle.invalid">
+                            <div *ngIf="nlibelle.hasError('required')">Libelle is required</div>
+                            <div *ngIf="nlibelle.hasError('minlength')">Min Length is 3</div>
                           </div>
                           
-                          <a type="button" class="btn btn-primary"(click)="save()"  routerLink="/rayon">Submit</a>
+                          <button type="button" class="btn btn-primary"(click)="save()"  routerLink="/rayon"  [disabled]="(f.invalid)" >Submit</button>
                         </form>
                   </div>
               </div>

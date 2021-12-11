@@ -15,7 +15,7 @@ export class FournisseurService {
  fournisseurByIdUrl:string='http://localhost:8089/SpringMVC/servlet/retrieveFournisseur';
  deleteUrl:string='http://localhost:8089/SpringMVC/servlet/removeFournisseur';
  addUrl:string='http://localhost:8089/SpringMVC/servlet/addFournisseurs';
- updateUrl:string='http://localhost:8081/SpringMVC/servlet/modifyFournisseur';
+ updateUrl:string='http://localhost:8089/SpringMVC/servlet/modifyFournisseur';
   constructor(private route:Router ,  private _http:HttpClient) { }
 
   getAllFournisseurs():Observable<Fournisseur[]>{

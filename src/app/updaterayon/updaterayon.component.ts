@@ -20,6 +20,7 @@ export class UpdaterayonComponent implements OnInit {
   update(){
     
     this.sr.updateRayon(this.rayon).subscribe();
+    window.location.reload();
   }
 
 }

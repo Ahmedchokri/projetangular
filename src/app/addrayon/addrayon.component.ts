@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Rayon } from 'app/modals/rayon';
@@ -12,7 +12,10 @@ import { RayonService } from 'app/rayon.service';
 export class AddrayonComponent implements OnInit {
 
   listrayon: Rayon[];
-  rayon : Rayon;
+  
+  
+  @Input() rayon : Rayon;
+  @Output() addEvent = new EventEmitter<Rayon>()
   constructor(private rayonService : RayonService , private router:Router) { }
 
   ngOnInit(): void {
@@ -21,6 +24,7 @@ export class AddrayonComponent implements OnInit {
   save(){
     this.rayonService.addRayon(this.rayon).subscribe(res=>{
       console.log(this.rayon);
+      window.location.reload();
       //console.log('fournisseur cree');
       //this.router.navigateByUrl('/rayon');
     });

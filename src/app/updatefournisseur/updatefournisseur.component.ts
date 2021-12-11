@@ -26,6 +26,7 @@ export class UpdatefournisseurComponent implements OnInit {
   }
   update(){
      this.sf.updateFournisseur(this.f).subscribe();
+     window.location.reload();
     
   }
 

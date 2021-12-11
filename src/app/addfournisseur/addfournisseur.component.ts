@@ -24,6 +24,7 @@ export class AddfournisseurComponent implements OnInit {
     this.fournisseurService.addFournisseur(this.fournisseur).subscribe(res=>{
       console.log('fournisseur cree');
       this.router.navigateByUrl('/icons');
+      window.location.reload();
     });
     
   }
