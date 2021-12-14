@@ -5,14 +5,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AddFactureComponent } from './add-facture/add-facture.component';
+import { FullCalendarComponent } from './full-calendar/full-calendar.component';
+import { DetailfactureComponent } from './detailfacture/detailfacture.component';
+
 
 const routes: Routes =[
   {path:"addfacture",component:AddFactureComponent},
+  {path:"detailfacture",component:DetailfactureComponent},
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, {
+  }, 
+  {path:"fullcalendar",component:FullCalendarComponent},{
     path: '',
     component: AdminLayoutComponent,
     children: [{

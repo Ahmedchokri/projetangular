@@ -38,7 +38,8 @@ export class AddFactureComponent implements OnInit {
       
    this.submitted = true;  
      this.save();  
-     this.route.navigateByUrl('/facture');
+    //  this.route.navigateByUrl('/facture');
+     //location.reload;
   }  
   
     
@@ -47,6 +48,7 @@ export class AddFactureComponent implements OnInit {
     this.ps.createF(this.Facture)  
       .subscribe(data => console.log(data), error => console.log(error));  
     this.Facture = new Facture();  
+    location.reload();
   }  
   
   get montantremise(){  
@@ -67,6 +69,7 @@ export class AddFactureComponent implements OnInit {
   
   addFactureForm(){  
     this.submitted=false;  
-    this.Facturesaveform.reset();  
+    this.Facturesaveform.reset(); 
+    location.reload();
   }  
 }

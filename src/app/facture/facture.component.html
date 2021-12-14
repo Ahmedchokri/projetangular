@@ -16,19 +16,23 @@
                         <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
                             <i class="material-icons">search</i>
                             <div class="ripple-container"></div>
-
-                          
-
                         </button>
+
+
+
                         <button type="button" class=" btn  btn-sm btn-success"  [routerLink]="['/facture/addfacture']"> <i class="fa fa-plus"></i>  Ajouter</button> <br>
                     </div>
+
+
+                    
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="table">
                                 <thead class=" text-primary">
-                                   <th>
-                                        Id Facture
-                                    </th> 
+                                   
+                                    <th hidden>
+                                        Id Facture 
+                                    </th>  
                                      <th>
                                         Date Facture 
                                      </th> 
@@ -55,7 +59,7 @@
                                         } | orderBy: key:reverse "> 
                                         
 
-                                         <td>{{u.idfacture}}</td> 
+                                         <td hidden>{{u.idfacture}}</td> 
                                        
                                         <td>{{ u.datefacture | date:'dd/MM/yyyy'}}</td> 
                                         <td>{{u.montantfacture}}</td>
@@ -63,28 +67,66 @@
                                         <td>{{u.active}}</td>  
                                       
                                        <td>
-                                           
-                                        <button type="button" class="btn btn-sm btn-danger" (click)="cancelFacture(u.idfacture)">
+                                       
+                                        <button type="button" class="btn btn-sm btn-danger" (click)="openSweetalert(u.idfacture)">
                                             <i class="fa fa-ban fa-fw"></i> 
                                         </button>
                                        
-                                         <button class="btn btn-sm btn-info"  >
-                                            <i class="fa fa-search"></i> Details
+                                         <button class="btn btn-sm btn-info"  (click)="triggerModal(modalData)">
+                                            <i class="fa fa-search"></i> Details 
                                         </button> 
+
+                                       
                                         </td> 
                                       
                                     </tr>
                                  
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
                <pagination-controls class="text-center my-pagination"  (pageChange)=" page = $event"></pagination-controls>  
-                
-   
+               <table><tr>
+   <td>
                 <span  class="material-icons" (click)="download()" tabindex="-1" role="button" aria-disabled="true">
                     picture_as_pdf </span>
-                
+                </td>
+                    <!-- <button type="button" class="btn btn-sm btn-info"  [routerLink]="['/fullcalendar']" > Calendar
+                        <i class="fa fa-calendar-minus-o"></i> 
+                    </button> -->
+<td>
+   
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+                   <td> <button  [routerLink]="['/fullcalendar']"  tabindex="-1" aria-disabled="true" >
+                        <i class="fa fa-calendar-minus-o" style="color: #508ed4;"></i> 
+                    </button>
+                </td>
+                   
+                </tr>
+                </table>
+
+                <ng-template #modalData let-modal>
+                    <div class="modal-header">
+                      <h1 class="modal-title" id="modal-basic-title">Detail Facture</h1>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <app-add-stock [prop2]="myRay" [stockToadd]="myRay"></app-add-stock> -->
+                      <app-detailfacture  [prop2]="myRay" [detailfacture]="myRay"></app-detailfacture>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">annuler</button>
+                    </div>
+                  </ng-template>
  </div>
  <router-outlet></router-outlet>

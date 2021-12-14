@@ -8,7 +8,7 @@
                       <h4 class="card-title ">Ajouter Facture</h4>
                      
                   </div>
-                 
+                 <br>
                   <div>  
                       <div class="col-sm-4"></div>  
                       <div class="col-sm-4" >  
@@ -18,9 +18,11 @@
                                   <label for="name">Montant Remise</label>  
                                   <input type="text" class="form-control"  formControlName="montantremise" data-toggle="tooltip"   
                                      data-placement="right" title="Enter montantRemise" >  
-                                     <div class="alert alert-danger" *ngIf="montantremise.errors">
+
+                                     <div class="alert alert-danger" *ngIf="montantremise.errors && (montantremise.dirty || montantremise.touched)">
                                         <div *ngIf="montantremise.errors.required">champs obligatoire</div>
                                         <div *ngIf="montantremise.errors.pattern">pattern non respecte</div>
+                                        <div *ngIf="montantremise.errors.minlength">Minimum 2 charactéres.</div>
                                               </div>
                               </div>  
                               
@@ -28,7 +30,7 @@
                                 <label for="name">Date Facture</label>
                                 <input class="form-control" id="floatingInput" name="datefacture" type="date" placeholder="Date Facture" #ndate="ngModel"
                                   [(ngModel)]="Facture.datefacture" />
-                                  <div class="alert alert-danger" *ngIf="datefacture.errors">
+                                  <div class="alert alert-danger" *ngIf="datefacture.errors && (datefacture.dirty || datefacture.touched)">
                                   <div *ngIf="datefacture.errors.required">champs obligatoire</div>
                                   <div *ngIf="datefacture.errors.pattern">pattern non respecte</div>
                                   </div>
@@ -40,7 +42,7 @@
                                 <label for="name">Active</label>  
                                 <input type="text" class="form-control" formControlName="active"   
                                   data-toggle="tooltip" data-placement="right" title="Enter active">  
-                                  <div class="alert alert-danger" *ngIf="active.errors">
+                                  <div class="alert alert-danger" *ngIf="active.errors && (active.dirty || active.touched)">
                                     <div *ngIf="active.errors.required">champs obligatoire</div>
                                     <div *ngIf="active.errors.pattern">pattern non respecte</div>
                                           </div> 
@@ -49,14 +51,55 @@
                                 <label for="name">Montant Facture</label>  
                                 <input type="text" class="form-control" formControlName="montantfacture"   
                                   data-toggle="tooltip" data-placement="right" title="Enter montantFacture">  
-                                  <div class="alert alert-danger" *ngIf="montantfacture.errors">
+                                  <div class="alert alert-danger" *ngIf="montantfacture.errors && (montantfacture.dirty || montantfacture.touched)">
                                     <div *ngIf="montantfacture.errors.required">champs obligatoire</div>
-                                    <div *ngIf="montantfacture.errors.pattern">pattern non respecte</div>
+                                    <div *ngIf="montantfacture.errors.pattern">Le pattern non respecté</div>
                                           </div> 
                             </div>
                         
 
-                            <button type="submit" class="btn btn-success" >Submit</button>  
+                                            <!-- debut detailfacture -->
+
+                          <!--  <table class="table table-bordered" formArrayName="Factures">
+                              <tr> Ajouter detailfacture </tr>
+                              <tr *ngFor="let detailfacture of Detailfacture().controls; let i=index" [formGroupName]="i">
+                                  <td>
+                                      <mat-form-field appearance="fill">
+                                          <mat-select formControlName="detailfacture" >
+                                              <mat-option *ngFor="let prod of produits"[value]="prod.idproduit" (click)="change(prod.prixunitaire,i,product)"> {{prod.libelleproduit}}  </mat-option>
+                                         
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                <td>
+                                    Quantity :
+                                    <input type="number" formControlName="qty" class="form-control"  (click)="change1(i,product)">
+                                </td> 
+                                 <td>
+                                  Pourcentage_Remise:
+                                  <input type="number" formControlName="pourcentage_remise" (click)="change2(i,product)" class="form-control">
+                              </td>
+                                 <td>
+                                  Montant_Remise:
+                                  <input type="number" formControlName="Montant_remise" class="form-control" disabled>
+                                 </td>
+                              
+                             <td>
+                                    Prix total:
+                                    <input type="number" formControlName="price" class="form-control" disabled >
+                                </td>
+                                <td>
+                                    <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>  
+                                    <button type="button" (click)="addProduct()" class="btn btn-primary">Add More</button>
+                                </td>
+                              </tr>
+                            </table> -->
+
+
+                                           <!-- fin  detailfacture -->
+
+
+                            <button type="submit" class="btn btn-success" >Ajouter</button>  
                           </form>  
                       </div>  
                       </div>  

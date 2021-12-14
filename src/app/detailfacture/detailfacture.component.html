@@ -1,0 +1,111 @@
+<!-- <form #f=ngForm  (submit)="save3()"> 
+  <div class="card-header">
+    <br>
+<h1 class="card-title">Detail Facture    </h1>   
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"> 
+    <span aria-hidden="true">&times;</span>
+ 
+  </button>       
+</div> 
+   <div class="mb-3">  
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Montant Remise {{Detailfacture.montantremise}}</label> 
+         <input name="montantremise" [(ngModel)]="Detailfacture.montantremise" #first="ngModel" type="date" class="form-control">
+         </div>
+       
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Pourcentage Remise </label>
+        <input name="pourcentageremise" [(ngModel)]="Detailfacture.pourcentageremise" #first="ngModel" type="date" class="form-control">
+      </div>    
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Prix Totale </label>
+        <input name="prixtotal" [(ngModel)]="Detailfacture.prixtotal" #first="ngModel" type="date" class="form-control">
+      </div>   
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Quantite </label>
+        <input name="quantite" [(ngModel)]="Detailfacture.quantite" #first="ngModel" type="date" class="form-control">
+      </div>  
+    </div>
+     
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-success " (click)="activeModal.close('Close click') " >Submit</button> 
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+        </div> -->
+<!-- </form> -->
+<!-- 
+<form [formGroup]="myForm" (submit)="getDetailFactureById()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Montant Remise {{detailfacture.montantremise}}</label> 
+   <input name="montantremise" [(ngModel)]="detailfacture.montantremise" #first="ngModel" type="date" class="form-control">
+   </div>
+    <div class="form-group">
+        <label>Iddetailfacture</label>
+        <input type="text" class="form-control" formControlName="iddetailfacture">
+    </div>
+    <div class="form-group">
+        <label>Montant Remise</label>
+        <input type="text" class="form-control" formControlName="montantremise">
+    </div>
+    <div class="form-group">
+        <label>Pourcentage Remise</label>
+        <input type="text" class="form-control" formControlName="pourcentageremise">
+    </div>
+    <div class="form-group">
+        <label>Prix total</label> 
+        <input type="text" class="form-control" formControlName="prixtotal">
+    </div>
+    <div class="form-group">
+      <label>Quantite </label>
+      <input type="text" class="form-control" formControlName=" quantite">
+  </div>
+    
+
+</form>
+   -->
+
+    
+   <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped" id="table">
+            <thead class=" text-primary">
+               
+                <th hidden>
+                    Id Detailfacture 
+                </th>  
+                 <th>
+                    Montant Remise 
+                 </th> 
+                <th>
+                    Pourcentage Remise
+                </th>
+                <th >
+                    Prix Total
+                </th>
+                <th>
+                    Quantite
+                 </th> 
+               
+            </thead>
+            <tbody> 
+               
+                 <tr *ngFor="let u of list "> 
+                    
+
+                     <td hidden>{{u.iddetailfacture}}</td> 
+                   
+                    <td>{{ u.montantremise}}</td> 
+                    <td>{{u.pourcentageremise}}</td>
+                    <td>{{u.prixtotal}}</td>
+                    <td>{{u.quantite}}</td>  
+              
+                  
+               
+             
+            </tbody>
+        </table>
+        
+    </div>
+</div>

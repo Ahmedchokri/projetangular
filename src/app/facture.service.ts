@@ -14,7 +14,7 @@ export class FactureService {
   factureByIdUrl:string='http://localhost:8089/SpringMVC/servlet/getfacturebyclient';
   cancelUrl:string='http://localhost:8089/SpringMVC/servlet/cancelfacture';
   factureUrl:string='http://localhost:8089/SpringMVC/servlet/getallfacture';
-  
+  datefactureUrl:string='http://localhost:8089/SpringMVC/servlet/getalldatefacture';
  
    constructor(private route:Router ,  private _http:HttpClient) { }
   
@@ -27,7 +27,11 @@ export class FactureService {
      
    }
    
- 
+   
+   getDateFacture():Observable<Date[]>{
+    return this._http.get<Date[]>(this.datefactureUrl);
+    
+  }
 
     cancelFacture(Facture: Facture | number): Observable<Facture> {
       const id = typeof  Facture === 'number' ? Facture : Facture.idfacture;
@@ -47,5 +51,12 @@ export class FactureService {
       createF(Facture: object): Observable<object> {  
         return this._http.post(`${this.baseUrl}`+'addfacture', Facture);  
       } 
+
+      // pdffacture(Facture: object):Observable<object>{  
+      //   return this._http.get<Facture>('http://localhost:8089/SpringMVC/servlet/pdfreportfacture',Facture);
+      // }
+      getNbFactureActive(){
+        return this._http.get<number>(this.baseUrl+'facture/getNbFactureActive');
+      }
    
 }
